@@ -48,7 +48,7 @@ class PageEmployeeCreate extends React.Component {
     } = this.state;
 
     const employee = { 
-      _id: Date.now(),
+      id: Date.now(),
       name, 
       age, 
       company, 
