@@ -17,9 +17,6 @@ class PageEmployeesList extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.isFetched === true) {
-      return;
-    }
     this.setState({ isLoading: true });
     fetch('http://localhost:3004/employees')
     .then((data) => data.json())
@@ -55,7 +52,6 @@ class PageEmployeesList extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
     employees: state.employees,
-    isFetched: state.isFetched
   }
 }
 
