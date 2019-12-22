@@ -2,7 +2,9 @@ import {
   EMPLOYEES_LOADED, 
   EMPLOYEE_CREATED,
   EMPLOYEES_LOADING,
-  EMPLOYEES_LOADING_ERROR
+  EMPLOYEES_LOADING_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR
   } from './constants';
 
 export const employeesLoaded = (employees) => {
@@ -32,6 +34,22 @@ export const employeesLoadingError = (employees) => {
     type: EMPLOYEES_LOADING_ERROR,
     payload: {
       error
+    }
+  };
+};
+export const loginSuccess = user => {
+  return {
+    type: LOGIN_SUCCESS,
+    payload: {
+      user
+    }
+  };
+};
+export const loginError = name => {
+  return {
+    type: LOGIN_ERROR,
+    payload: {
+      name
     }
   };
 };

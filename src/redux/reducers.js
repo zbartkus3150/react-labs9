@@ -1,13 +1,18 @@
-import { EMPLOYEES_LOADED } from './constants';
-import { EMPLOYEE_CREATED } from './constants';
-import { EMPLOYEES_LOADING } from './constants';
-import { EMPLOYEES_LOADING_ERROR } from './constants';
+import { 
+  EMPLOYEES_LOADED,
+  EMPLOYEE_CREATED,
+  EMPLOYEES_LOADING,
+  EMPLOYEES_LOADING_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR
+ } from './constants';
 
 export const initialState = {
   employees: [],
   isLoading: false,
   error: null,
-  isFetched: false
+  isFetched: false,
+  user: null
 };
 
 // Read this: https://redux.js.org/basics/reducers
@@ -30,6 +35,15 @@ const appReducer = (state = initialState, action) => {
     case EMPLOYEES_LOADING_ERROR: {
       const {error} = action.payload;
       return {...state, isLoading: false, error};
+    }
+    case LOGIN_SUCCESS: {
+      const { user } = action.payload;
+      return { ...state, user };
+    }
+    case LOGIN_ERROR: {
+      const { name } = action.payload;
+      alert(`User ${name} not found.`);
+      return { ...state, user: null };
     }
     default:
         return state
